@@ -12,7 +12,7 @@
 [travis-image]: https://img.shields.io/travis/<%= author %>/<%= projectName %>.svg?style=flat-square
 [travis-url]: https://travis-ci.org/<%= author %>/paloma
 [david-image]: http://img.shields.io/david/<%= author %>/<%= projectName %>.svg?style=flat-square
-[david-url]: https://david-dm.org/<%= author %>/<%= projectName %.
+[david-url]: https://david-dm.org/<%= author %>/<%= projectName %>.
 [license-image]: http://img.shields.io/npm/l/<%= projectName %>.svg?style=flat-square
 [license-url]: LICENSE
 [downloads-image]: http://img.shields.io/npm/dm/<%= projectName %>.svg?style=flat-square

@@ -30,6 +30,9 @@ module.exports = yeoman.Base.extend({
     }];
 
     return this.prompt(prompts).then(answers => {
+      this.projectName = answers.projectName;
+      this.author = answers.author;
+      this.email = answers.email;
       this.log('project name', answers.projectName);
     });
 
@@ -40,17 +43,27 @@ module.exports = yeoman.Base.extend({
       this.templatePath('.editorconfig'),
       this.destinationPath('.editorconfig')
     );
-    this.fs.copy(
+    this.fs.copyTpl(
       this.templatePath('README.md'),
-      this.destinationPath('README.md')
+      this.destinationPath('README.md'),
+      {
+        projectName: this.projectName,
+        author: this.author,
+        email: this.email
+      }
     );
-    this.fs.copy(
+    this.fs.copyTpl(
       this.templatePath('package.json'),
-      this.destinationPath('package.json')
+      this.destinationPath('package.json'),
+      {
+        projectName: this.projectName,
+        author: this.author,
+        email: this.email
+      }
     );
   },
 
   install: function () {
-    this.installDependencies();
+    this.npmInstall();
   }
 });
