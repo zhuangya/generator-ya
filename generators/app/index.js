@@ -2,6 +2,7 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var gitUserInfo = require('git-user-info');
 
 module.exports = yeoman.Base.extend({
   prompting: function () {
@@ -11,22 +12,41 @@ module.exports = yeoman.Base.extend({
     ));
 
     var prompts = [{
-      type: 'confirm',
-      name: 'someAnswer',
-      message: 'Would you like to enable this option?',
-      default: true
+      type: 'input',
+      name: 'author',
+      message: 'Your Name',
+      default: gitUserInfo().name,
+      store: true
+    }, {
+      type: 'input',
+      name: 'email',
+      message: 'Your E-mail',
+      default: gitUserInfo().email,
+      store: true
+    }, {
+      type: 'input',
+      name: 'projectName',
+      message: 'project name:',
     }];
 
-    return this.prompt(prompts).then(function (props) {
-      // To access props later use this.props.someAnswer;
-      this.props = props;
-    }.bind(this));
+    return this.prompt(prompts).then(answers => {
+      this.log('project name', answers.projectName);
+    });
+
   },
 
   writing: function () {
     this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
+      this.templatePath('.editorconfig'),
+      this.destinationPath('.editorconfig')
+    );
+    this.fs.copy(
+      this.templatePath('README.md'),
+      this.destinationPath('README.md')
+    );
+    this.fs.copy(
+      this.templatePath('package.json'),
+      this.destinationPath('package.json')
     );
   },
 
