@@ -1,4 +1,7 @@
 # generator-ya [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/zhuangya/generator-ya.svg)](https://greenkeeper.io/)
+
 > 
 
 ## Installation
